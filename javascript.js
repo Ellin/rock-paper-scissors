@@ -30,24 +30,44 @@ function getHumanChoice() {
     return humanChoice;
 }
 
+// initialize variable humanScore = 0
+let humanScore = 0;
+
+// initialize variable computerScore = 0;
+let computerScore = 0;
 
 // Create function playRound (humanChoice, computerChoice): Play single round
-// Compare humanChoice vs cpuHand
-// if humanChoice  === cpuHand
-// display message declaring a draw
-
-// else if humanChoice === "rock" && computerChoice === "scissors"
+// Compare humanChoice vs computerChoice
+// IF humanChoice  === computerChoice
+//      THEN display message declaring a draw
+// ELSE IF humanChoice === "rock" && computerChoice === "scissors"
 //  OR humanChoice === "paper" && computerChoice === "rock",
 //  OR humanChoice === "scissors" && computerChoice === "paper"
-// then display message declaring that the human wins
-// increment humanScore
+//      THEN display message declaring that the human wins
+//      increment humanScore
+// ELSE display message declaring the computer wins
+//       increment computerScore
 
-// else display message declaring the computer wins
-// increment computerScore
-
-
-// initialize variable humanScore = 0
-// initialize variable computerScore = 0;
+function playRound (humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`You: ${humanChoice} \nComputer: ${computerChoice} \
+            \nDRAW! \
+            \n\nSCORE: ${humanScore} - ${computerScore}`);
+    } else if (humanChoice === "rock" && computerChoice === "scissors"
+        || humanChoice === "paper" && computerChoice === "rock"
+        || humanChoice === "scissors" && computerChoice === "paper") {
+        humanScore++;
+        console.log(`You: ${humanChoice} \nComputer: ${computerChoice} \
+            \nYou win! ${humanChoice} beats ${computerChoice}. \
+            \n\nSCORE: ${humanScore} - ${computerScore}`);
+        
+    } else {
+        computerScore++;
+        console.log(`You: ${humanChoice} \nComputer: ${computerChoice} \
+            \nYou lose! ${computerChoice} beats ${humanChoice}. \
+            \n\nSCORE: ${humanScore} - ${computerScore}`);   
+    }
+}
 
 // Create function playGame
 // calls playRound 5 times
