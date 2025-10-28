@@ -1,7 +1,24 @@
-// Function: Get computer choice
+// Create function getComputerChoice(): Get computer choice
 // Generate random number from 0-2
 // Assign computerChoice: 0 = "rock", 1 = "paper", 2 = "scissors"
 // Return computerChoice
+
+function getComputerChoice() {
+    let computerChoice = Math.floor(Math.random() * 3);
+
+    switch (computerChoice) {
+        case 0:
+            computerChoice = "rock";
+            break;
+        case 1:
+            computerChoice = "paper";
+            break;
+        case 2:
+            computerChoice = "scissors";
+    }
+
+    return computerChoice;
+}
 
 // Function: Get human choice
 // Prompt for input
