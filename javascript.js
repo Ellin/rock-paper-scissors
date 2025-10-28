@@ -69,6 +69,22 @@ function playRound (humanChoice, computerChoice) {
     }
 }
 
-// Create function playGame
-// calls playRound 5 times
-// Keeps track of scores and declares a winner at the end
+// Create function playGame()
+// Calls playRound 5 times
+// Compares scores and declares a winner at the end
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+
+    if (humanScore > computerScore) {
+        console.log(`Game over. \nCONGRATS! You WIN.`);
+    } else if (humanScore < computerScore) {
+        console.log(`Game over. \nYou LOSE.`);
+    } else {
+        console.log(`Game over. It's a DRAW!`)
+    }
+}
+
+playGame();
