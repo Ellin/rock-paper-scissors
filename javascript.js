@@ -20,10 +20,15 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// Function: Get human choice
+// Create function getHumanChoice: Get human choice
 // Prompt for input
 // Standardize input to lower case ("Rock"-> "rock")
 // Return humanChoice
+
+function getHumanChoice() {
+    let humanChoice = prompt("Make your choice! Rock, paper, or scissors?").toLocaleLowerCase();
+    return humanChoice;
+}
 
 
 // Create function playRound (humanChoice, computerChoice): Play single round
