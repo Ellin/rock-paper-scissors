@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: yellow;
+    height: 500px;
+}
+
+.player,
+.cpu {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    gap: 10px;
+    padding: 20px;
+}
+
+.game-screen {
+    padding: 20px;
+    background-color: rgb(196, 255, 196);
+}
+
+h2 {
+    text-align: center;
+}
