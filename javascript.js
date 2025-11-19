@@ -2,6 +2,8 @@ const gameScreen = document.querySelector(".game-screen");
 const gamePara = document.querySelector(".game-para");
 const playerScoreSpan = document.querySelector(".player-score");
 const cpuScoreSpan = document.querySelector(".cpu-score");
+const playerHandSpan = document.querySelector('.player-hand');
+const cpuHandSpan = document.querySelector('.cpu-hand');
 
 // Create function getComputerChoice(): Get computer choice
 // Generate random number from 0-2
@@ -31,6 +33,32 @@ function getHumanChoice(e) {
     return humanChoice;
 }
 
+function updateEmojis(humanChoice, computerChoice) {
+    switch (humanChoice) {
+        case 'rock':
+            playerHandSpan.textContent = '🪨';
+            break;
+        case 'paper':
+            playerHandSpan.textContent = '🗞️';
+            break;
+        case 'scissors':
+            playerHandSpan.textContent = '✂️';
+            break;
+    }
+
+    switch (computerChoice) {
+        case 'rock':
+            cpuHandSpan.textContent = '🪨';
+            break;
+        case 'paper':
+            cpuHandSpan.textContent = '🗞️';
+            break;
+        case 'scissors':
+            cpuHandSpan.textContent = '✂️';
+            break;
+    }
+}
+
 // initialize variable humanScore = 0
 let humanScore = 0;
 
@@ -50,10 +78,10 @@ let computerScore = 0;
 //       increment computerScore
 
 function playRound (humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
+    updateEmojis(humanChoice, computerChoice);
 
-        gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
-            \nDRAW!`;
+    if (humanChoice === computerChoice) {
+        gamePara.textContent = 'DRAW';
         playerScoreSpan.textContent = humanScore;
         cpuScoreSpan.textContent = computerScore;
 
@@ -62,8 +90,7 @@ function playRound (humanChoice, computerChoice) {
         || humanChoice === "scissors" && computerChoice === "paper") {
         humanScore++;
 
-        gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
-            \nYou win! ${humanChoice} beats ${computerChoice}.`;
+        gamePara.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
         playerScoreSpan.textContent = humanScore;
         cpuScoreSpan.textContent = computerScore;
 
@@ -71,12 +98,10 @@ function playRound (humanChoice, computerChoice) {
     } else {
         computerScore++;
 
-        gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
-            \nYou lose! ${computerChoice} beats ${humanChoice}.`;
+        gamePara.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
 
         playerScoreSpan.textContent = humanScore;
         cpuScoreSpan.textContent = computerScore;
-
     }
 }
 
