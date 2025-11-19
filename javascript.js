@@ -20,13 +20,9 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// Create function getHumanChoice: Get human choice
-// Prompt for input
-// Standardize input to lower case ("Rock"-> "rock")
-// Return humanChoice
-
-function getHumanChoice() {
-    let humanChoice = prompt("Make your choice! Rock, paper, or scissors?").toLowerCase();
+// Get human choice from clicked button ID
+function getHumanChoice(e) {
+    let humanChoice = e.target.getAttribute('id').slice(7); // remove "player-" from id
     return humanChoice;
 }
 
@@ -87,4 +83,13 @@ function playGame() {
     }
 }
 
-playGame();
+
+// Play a round when a player button is clicked
+
+const playerButtons = document.querySelectorAll(".player button");
+
+playerButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        playRound(getHumanChoice(e), getComputerChoice());
+    });
+});
