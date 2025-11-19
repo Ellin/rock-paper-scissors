@@ -1,5 +1,7 @@
 const gameScreen = document.querySelector(".game-screen");
 const gamePara = document.querySelector(".game-para");
+const playerScoreSpan = document.querySelector(".player-score");
+const cpuScoreSpan = document.querySelector(".cpu-score");
 
 // Create function getComputerChoice(): Get computer choice
 // Generate random number from 0-2
@@ -51,8 +53,9 @@ function playRound (humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
 
         gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
-            \nDRAW! \
-            \n\nSCORE: ${humanScore} - ${computerScore}`;
+            \nDRAW!`;
+        playerScoreSpan.textContent = humanScore;
+        cpuScoreSpan.textContent = computerScore;
 
     } else if (humanChoice === "rock" && computerChoice === "scissors"
         || humanChoice === "paper" && computerChoice === "rock"
@@ -60,16 +63,20 @@ function playRound (humanChoice, computerChoice) {
         humanScore++;
 
         gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
-            \nYou win! ${humanChoice} beats ${computerChoice}. \
-            \n\nSCORE: ${humanScore} - ${computerScore}`;
+            \nYou win! ${humanChoice} beats ${computerChoice}.`;
+        playerScoreSpan.textContent = humanScore;
+        cpuScoreSpan.textContent = computerScore;
+
         
     } else {
         computerScore++;
 
         gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
-            \nYou lose! ${computerChoice} beats ${humanChoice}. \
-            \n\nSCORE: ${humanScore} - ${computerScore}`;
- 
+            \nYou lose! ${computerChoice} beats ${humanChoice}.`;
+
+        playerScoreSpan.textContent = humanScore;
+        cpuScoreSpan.textContent = computerScore;
+
     }
 }
 
