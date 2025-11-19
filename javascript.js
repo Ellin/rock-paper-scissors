@@ -1,3 +1,6 @@
+const gameScreen = document.querySelector(".game-screen");
+const gamePara = document.querySelector(".game-para");
+
 // Create function getComputerChoice(): Get computer choice
 // Generate random number from 0-2
 // Assign computerChoice: 0 = "rock", 1 = "paper", 2 = "scissors"
@@ -46,22 +49,27 @@ let computerScore = 0;
 
 function playRound (humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log(`You: ${humanChoice} \nComputer: ${computerChoice} \
+
+        gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
             \nDRAW! \
-            \n\nSCORE: ${humanScore} - ${computerScore}`);
+            \n\nSCORE: ${humanScore} - ${computerScore}`;
+
     } else if (humanChoice === "rock" && computerChoice === "scissors"
         || humanChoice === "paper" && computerChoice === "rock"
         || humanChoice === "scissors" && computerChoice === "paper") {
         humanScore++;
-        console.log(`You: ${humanChoice} \nComputer: ${computerChoice} \
+
+        gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
             \nYou win! ${humanChoice} beats ${computerChoice}. \
-            \n\nSCORE: ${humanScore} - ${computerScore}`);
+            \n\nSCORE: ${humanScore} - ${computerScore}`;
         
     } else {
         computerScore++;
-        console.log(`You: ${humanChoice} \nComputer: ${computerChoice} \
+
+        gamePara.textContent = `You: ${humanChoice} \nComputer: ${computerChoice} \
             \nYou lose! ${computerChoice} beats ${humanChoice}. \
-            \n\nSCORE: ${humanScore} - ${computerScore}`);   
+            \n\nSCORE: ${humanScore} - ${computerScore}`;
+ 
     }
 }
 
