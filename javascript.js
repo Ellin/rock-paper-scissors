@@ -82,8 +82,6 @@ function playRound (humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice) {
         gamePara.textContent = 'DRAW';
-        playerScoreSpan.textContent = humanScore;
-        cpuScoreSpan.textContent = computerScore;
 
     } else if (humanChoice === "rock" && computerChoice === "scissors"
         || humanChoice === "paper" && computerChoice === "rock"
@@ -91,18 +89,15 @@ function playRound (humanChoice, computerChoice) {
         humanScore++;
 
         gamePara.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
-        playerScoreSpan.textContent = humanScore;
-        cpuScoreSpan.textContent = computerScore;
-
         
     } else {
         computerScore++;
 
         gamePara.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
-
-        playerScoreSpan.textContent = humanScore;
-        cpuScoreSpan.textContent = computerScore;
     }
+
+    playerScoreSpan.textContent = humanScore;
+    cpuScoreSpan.textContent = computerScore;
 }
 
 // Create function playGame()
