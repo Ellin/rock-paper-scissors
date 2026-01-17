@@ -5,13 +5,9 @@ const cpuScoreSpan = document.querySelector(".cpu-score");
 const playerHandSpan = document.querySelector('.player-hand');
 const cpuHandSpan = document.querySelector('.cpu-hand');
 
-// Create function getComputerChoice(): Get computer choice
-// Generate random number from 0-2
-// Assign computerChoice: 0 = "rock", 1 = "paper", 2 = "scissors"
-// Return computerChoice
-
+// Randomly generate the computer's choice
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3);
+    let computerChoice = Math.floor(Math.random() * 3); // Generate random number from 0-2
 
     switch (computerChoice) {
         case 0:
@@ -59,24 +55,11 @@ function updateEmojis(humanChoice, computerChoice) {
     }
 }
 
-// initialize variable humanScore = 0
+// Initialize variables
 let humanScore = 0;
-
-// initialize variable computerScore = 0;
 let computerScore = 0;
 
-// Create function playRound (humanChoice, computerChoice): Play single round
-// Compare humanChoice vs computerChoice
-// IF humanChoice  === computerChoice
-//      THEN display message declaring a draw
-// ELSE IF humanChoice === "rock" && computerChoice === "scissors"
-//  OR humanChoice === "paper" && computerChoice === "rock",
-//  OR humanChoice === "scissors" && computerChoice === "paper"
-//      THEN display message declaring that the human wins
-//      increment humanScore
-// ELSE display message declaring the computer wins
-//       increment computerScore
-
+// Plays single round
 function playRound (humanChoice, computerChoice) {
     updateEmojis(humanChoice, computerChoice);
 
@@ -87,12 +70,9 @@ function playRound (humanChoice, computerChoice) {
         || humanChoice === "paper" && computerChoice === "rock"
         || humanChoice === "scissors" && computerChoice === "paper") {
         humanScore++;
-
         gamePara.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
-        
     } else {
         computerScore++;
-
         gamePara.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
     }
 
@@ -100,10 +80,9 @@ function playRound (humanChoice, computerChoice) {
     cpuScoreSpan.textContent = computerScore;
 }
 
-// Create function playGame()
+
 // Calls playRound 5 times
 // Compares scores and declares a winner at the end
-
 function playGame() {
     for (let i = 0; i < 5; i++) {
         playRound(getHumanChoice(), getComputerChoice());
@@ -118,11 +97,9 @@ function playGame() {
     }
 }
 
-
-// Play a round when a player button is clicked
-
 const playerButtons = document.querySelectorAll(".player button");
 
+// Play a round when the player chooses a hand
 playerButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         playRound(getHumanChoice(e), getComputerChoice());
