@@ -82,17 +82,55 @@ function playRound (humanChoice, computerChoice) {
     checkScore();
 }
 
-// Checks if the player or computer has won (i.e. reached a score of 5) and announces winner
+// Checks if the player or computer has won (i.e. reached a score of 5) and ends game
 function checkScore() {
     if (humanScore == 5 || computerScore == 5) {
-        announceWinner();
+        endGame();
     }
+}
+
+function endGame() {
+    announceWinner();
+    showPlayAgainButton();
+    disablePlayerButtons();
 }
 
 function announceWinner() {
     const message = document.createElement("p");
     message.textContent = `Game over. You ${humanScore == 5? 'WIN!' : 'LOSE!'}`;
+    message.id = "game-over";
     gameScreen.append(message);
+}
+
+function showPlayAgainButton() {
+    const playAgainButton = document.createElement("button");
+    playAgainButton.textContent = "Play again";
+    playAgainButton.id = "play-again";
+    playAgainButton.addEventListener("click", (e) => {
+        restartGame();
+    });
+    gameScreen.append(playAgainButton);
+}
+
+function restartGame() {
+    gamePara.textContent = "Choose a weapon to start the game!";
+    playerScoreSpan.textContent = "0";
+    cpuScoreSpan.textContent = "0";
+    playerHandSpan.textContent = "";
+    cpuHandSpan.textContent = "";
+    humanScore = 0;
+    computerScore = 0;
+    document.querySelector("#play-again").remove();
+    document.querySelector("#game-over").remove();
+    enablePlayerButtons();
+}
+
+function disablePlayerButtons() {
+    playerButtons.forEach(button => button.disabled = true);
+}
+
+function enablePlayerButtons() {
+    playerButtons.forEach(button => button.disabled = false);
 }
 
 const playerButtons = document.querySelectorAll(".player button");
