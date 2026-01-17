@@ -78,23 +78,21 @@ function playRound (humanChoice, computerChoice) {
 
     playerScoreSpan.textContent = humanScore;
     cpuScoreSpan.textContent = computerScore;
+
+    checkScore();
 }
 
-
-// Calls playRound 5 times
-// Compares scores and declares a winner at the end
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
+// Checks if the player or computer has won (i.e. reached a score of 5) and announces winner
+function checkScore() {
+    if (humanScore == 5 || computerScore == 5) {
+        announceWinner();
     }
+}
 
-    if (humanScore > computerScore) {
-        console.log(`Game over. \nCONGRATS! You WIN.`);
-    } else if (humanScore < computerScore) {
-        console.log(`Game over. \nYou LOSE.`);
-    } else {
-        console.log(`Game over. It's a DRAW!`)
-    }
+function announceWinner() {
+    const message = document.createElement("p");
+    message.textContent = `Game over. You ${humanScore == 5? 'WIN!' : 'LOSE!'}`;
+    gameScreen.append(message);
 }
 
 const playerButtons = document.querySelectorAll(".player button");
