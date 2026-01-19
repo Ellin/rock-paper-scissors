@@ -35,7 +35,7 @@ header {
 .player,
 .computer,
 .scores {
-    padding: 20px;
+    padding: 40px;
     width: 100%;
     max-width: 800px;
 }
@@ -48,13 +48,19 @@ header {
     background-color: pink;
 }
 
+.player-header,
+.computer-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .player-buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     background-color: red;
     width: 100%;
-    max-width: 700px;
 }
 
 .computer {
@@ -63,7 +69,6 @@ header {
 }
 
 .game-messages {
-    padding: 20px;
     background-color: rgb(196, 255, 196);
 }
 
