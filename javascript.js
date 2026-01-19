@@ -75,21 +75,25 @@ function updateButtons(playerChoice, computerChoice) {
 let playerScore = 0;
 let computerScore = 0;
 
+function capitalizeString(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Plays single round
 function playRound (playerChoice, computerChoice) {
     updateButtons(playerChoice, computerChoice);
 
     if (playerChoice === computerChoice) {
-        gamePara.textContent = 'DRAW';
+        gamePara.textContent = `DRAW. You both played ${playerChoice}.`;
 
     } else if (playerChoice === "rock" && computerChoice === "scissors"
         || playerChoice === "paper" && computerChoice === "rock"
         || playerChoice === "scissors" && computerChoice === "paper") {
         playerScore++;
-        gamePara.textContent = `You win! ${playerChoice} beats ${computerChoice}.`;
+        gamePara.textContent = `You win this round. ${capitalizeString(playerChoice)} beats ${computerChoice}.`;
     } else {
         computerScore++;
-        gamePara.textContent = `You lose! ${computerChoice} beats ${playerChoice}.`;
+        gamePara.textContent = `You lose this round. ${capitalizeString(computerChoice)} beats ${playerChoice}.`;
     }
 
     playerScoreSpan.textContent = playerScore;
