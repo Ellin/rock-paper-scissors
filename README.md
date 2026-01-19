@@ -7,7 +7,6 @@ In this project, I made a simple "rock, paper, scissors" game. The initial versi
 ## Skills practiced 
 Through this project, I practiced the following skills:
 - DOM manipulation
-- CSS flexbox
-- Creating and merging branches with git
-- UI design
+- Responsive design with CSS flexbox & clamp
 - Game logic
+- Creating and merging branches with git
