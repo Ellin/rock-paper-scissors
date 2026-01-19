@@ -1,4 +1,4 @@
-const gameScreen = document.querySelector(".game-screen");
+const gameScreen = document.querySelector(".game-messages");
 const gamePara = document.querySelector(".game-para");
 const playerScoreSpan = document.querySelector(".player-score");
 const computerScoreSpan = document.querySelector(".computer-score");
