@@ -133,7 +133,7 @@ function showPlayAgainButton() {
 }
 
 function restartGame() {
-    gamePara.textContent = "Choose a weapon to start the game!";
+    gamePara.textContent = "Choose a hand to start the game!";
     playerScoreSpan.textContent = "0";
     computerScoreSpan.textContent = "0";
     playerHandSpan.textContent = "";
