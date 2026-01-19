@@ -117,7 +117,7 @@ function restartGame() {
     playerScoreSpan.textContent = "0";
     computerScoreSpan.textContent = "0";
     playerHandSpan.textContent = "";
-    computerHandSpan.textContent = "";
+    computerHandSpan.textContent = "🤖";
     playerScore = 0;
     computerScore = 0;
     document.querySelector("#play-again").remove();

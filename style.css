@@ -88,4 +88,10 @@ p {
 button {
     height: 150px;
     width: 150px;
+    font-size: 3em;
+    background-color: white;
+}
+
+.player-buttons button:hover {
+    background-color: aqua;
 }
