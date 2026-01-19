@@ -1,9 +1,9 @@
 const gameScreen = document.querySelector(".game-screen");
 const gamePara = document.querySelector(".game-para");
 const playerScoreSpan = document.querySelector(".player-score");
-const cpuScoreSpan = document.querySelector(".cpu-score");
+const computerScoreSpan = document.querySelector(".computer-score");
 const playerHandSpan = document.querySelector('.player-hand');
-const cpuHandSpan = document.querySelector('.cpu-hand');
+const computerHandSpan = document.querySelector('.computer-hand');
 
 // Randomly generate the computer's choice
 function getComputerChoice() {
@@ -23,14 +23,14 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// Get human choice from clicked button ID
-function getHumanChoice(e) {
-    let humanChoice = e.target.getAttribute('id').slice(7); // remove "player-" from id
-    return humanChoice;
+// Get player choice from clicked button ID
+function getPlayerChoice(e) {
+    let playerChoice = e.target.getAttribute('id').slice(7); // remove "player-" from id
+    return playerChoice;
 }
 
-function updateEmojis(humanChoice, computerChoice) {
-    switch (humanChoice) {
+function updateEmojis(playerChoice, computerChoice) {
+    switch (playerChoice) {
         case 'rock':
             playerHandSpan.textContent = '🪨';
             break;
@@ -44,47 +44,47 @@ function updateEmojis(humanChoice, computerChoice) {
 
     switch (computerChoice) {
         case 'rock':
-            cpuHandSpan.textContent = '🪨';
+            computerHandSpan.textContent = '🪨';
             break;
         case 'paper':
-            cpuHandSpan.textContent = '🗞️';
+            computerHandSpan.textContent = '🗞️';
             break;
         case 'scissors':
-            cpuHandSpan.textContent = '✂️';
+            computerHandSpan.textContent = '✂️';
             break;
     }
 }
 
 // Initialize variables
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 
 // Plays single round
-function playRound (humanChoice, computerChoice) {
-    updateEmojis(humanChoice, computerChoice);
+function playRound (playerChoice, computerChoice) {
+    updateEmojis(playerChoice, computerChoice);
 
-    if (humanChoice === computerChoice) {
+    if (playerChoice === computerChoice) {
         gamePara.textContent = 'DRAW';
 
-    } else if (humanChoice === "rock" && computerChoice === "scissors"
-        || humanChoice === "paper" && computerChoice === "rock"
-        || humanChoice === "scissors" && computerChoice === "paper") {
-        humanScore++;
-        gamePara.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
+    } else if (playerChoice === "rock" && computerChoice === "scissors"
+        || playerChoice === "paper" && computerChoice === "rock"
+        || playerChoice === "scissors" && computerChoice === "paper") {
+        playerScore++;
+        gamePara.textContent = `You win! ${playerChoice} beats ${computerChoice}.`;
     } else {
         computerScore++;
-        gamePara.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
+        gamePara.textContent = `You lose! ${computerChoice} beats ${playerChoice}.`;
     }
 
-    playerScoreSpan.textContent = humanScore;
-    cpuScoreSpan.textContent = computerScore;
+    playerScoreSpan.textContent = playerScore;
+    computerScoreSpan.textContent = computerScore;
 
     checkScore();
 }
 
 // Checks if the player or computer has won (i.e. reached a score of 5) and ends game
 function checkScore() {
-    if (humanScore == 5 || computerScore == 5) {
+    if (playerScore == 5 || computerScore == 5) {
         endGame();
     }
 }
@@ -97,7 +97,7 @@ function endGame() {
 
 function announceWinner() {
     const message = document.createElement("p");
-    message.textContent = `Game over. You ${humanScore == 5? 'WIN!' : 'LOSE!'}`;
+    message.textContent = `Game over. You ${playerScore == 5? 'WIN!' : 'LOSE!'}`;
     message.id = "game-over";
     gameScreen.append(message);
 }
@@ -115,10 +115,10 @@ function showPlayAgainButton() {
 function restartGame() {
     gamePara.textContent = "Choose a weapon to start the game!";
     playerScoreSpan.textContent = "0";
-    cpuScoreSpan.textContent = "0";
+    computerScoreSpan.textContent = "0";
     playerHandSpan.textContent = "";
-    cpuHandSpan.textContent = "";
-    humanScore = 0;
+    computerHandSpan.textContent = "";
+    playerScore = 0;
     computerScore = 0;
     document.querySelector("#play-again").remove();
     document.querySelector("#game-over").remove();
@@ -138,6 +138,6 @@ const playerButtons = document.querySelectorAll(".player button");
 // Play a round when the player chooses a hand
 playerButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        playRound(getHumanChoice(e), getComputerChoice());
+        playRound(getPlayerChoice(e), getComputerChoice());
     });
 });
