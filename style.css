@@ -13,6 +13,7 @@ body {
     flex-direction: column;
     font-size: 24px;
     height: 100%;
+    background-color: rgb(255, 255, 214);
 }
 
 header {
@@ -27,7 +28,6 @@ header {
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background-color: yellow;
     height: 100%;
 }
 
@@ -59,7 +59,6 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: red;
     width: 100%;
 }
 
@@ -92,11 +91,11 @@ button {
 }
 
 .player-buttons button:hover {
-    background-color: aqua;
+    background-color: rgb(164, 255, 255);
 }
 
 .highlight {
-    background-color: aqua;
+    background-color: yellow;
 }
 
 #play-again {
@@ -106,8 +105,13 @@ button {
     padding: 0.5em 1em;
     border-radius: 40px;
     background-color: rgb(69, 214, 69);
+    transition: 0.2s;
     text-align: center;
     margin-top: 20px;
+}
+
+#play-again:hover {
+    background-color: yellow;
 }
 
 #game-over {
