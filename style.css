@@ -97,3 +97,7 @@ button {
 .player-buttons button:hover {
     background-color: aqua;
 }
+
+.highlight {
+    background-color: aqua;
+}

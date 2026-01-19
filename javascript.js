@@ -4,6 +4,9 @@ const playerScoreSpan = document.querySelector(".player-score");
 const computerScoreSpan = document.querySelector(".computer-score");
 const playerHandSpan = document.querySelector('.player-hand');
 const computerHandSpan = document.querySelector('.computer-hand');
+const playerRockButton = document.querySelector('#player-rock');
+const playerPaperButton = document.querySelector('#player-paper');
+const playerScissorsButton = document.querySelector('#player-scissors');
 
 // Randomly generate the computer's choice
 function getComputerChoice() {
@@ -29,16 +32,29 @@ function getPlayerChoice(e) {
     return playerChoice;
 }
 
-function updateEmojis(playerChoice, computerChoice) {
+function removeButtonHighlights() {
+    if (playerRockButton.classList.contains('highlight')) {
+        playerRockButton.classList.remove('highlight');
+    } else if (playerPaperButton.classList.contains('highlight')) {
+        playerPaperButton.classList.remove('highlight');
+    } else if (playerScissorsButton.classList.remove('highlight')) {
+        playerScissorsButton.classList.remove('highlight');
+    }
+}
+
+function updateButtons(playerChoice, computerChoice) {
+
+    removeButtonHighlights();
+
     switch (playerChoice) {
         case 'rock':
-            playerHandSpan.textContent = '🪨';
+            playerRockButton.classList.add('highlight');
             break;
         case 'paper':
-            playerHandSpan.textContent = '🗞️';
+            playerPaperButton.classList.add('highlight');
             break;
         case 'scissors':
-            playerHandSpan.textContent = '✂️';
+            playerScissorsButton.classList.add('highlight');
             break;
     }
 
@@ -61,7 +77,7 @@ let computerScore = 0;
 
 // Plays single round
 function playRound (playerChoice, computerChoice) {
-    updateEmojis(playerChoice, computerChoice);
+    updateButtons(playerChoice, computerChoice);
 
     if (playerChoice === computerChoice) {
         gamePara.textContent = 'DRAW';
@@ -123,6 +139,7 @@ function restartGame() {
     document.querySelector("#play-again").remove();
     document.querySelector("#game-over").remove();
     enablePlayerButtons();
+    removeButtonHighlights();
 }
 
 function disablePlayerButtons() {
