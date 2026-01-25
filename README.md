@@ -4,6 +4,10 @@ In this project, I made a simple "rock, paper, scissors" game. The initial versi
 
 **View project:** https://ellin.github.io/rock-paper-scissors/
 
+## Project screenshots
+<img src="images/rps-mobile-screenshot.png" alt="A screenshot of the Rock, Paper, Scissors app in mobile" width=35%>
+
+
 ## Skills practiced 
 Through this project, I practiced the following skills:
 - DOM manipulation
